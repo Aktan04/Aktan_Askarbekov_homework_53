@@ -32,7 +32,9 @@
                     <td>@phone.Company</td>
                     <td>@phone.Price</td>
                     <td>
-                       <a asp-action="Create" asp-controller="Order" asp-route-phoneId="@phone.Id">Заказать</a>
+                        <a asp-action="Create" asp-controller="Order" asp-route-phoneId="@phone.Id">Заказать</a>
+                        <a asp-action="Edit" asp-controller="Phone" asp-route-Id="@phone.Id">Редактировать</a>
+                        <a asp-action="Delete" asp-controller="Phone" asp-route-Id="@phone.Id">Удалить</a>
                     </td>
                 </tr>
             }
