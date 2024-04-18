@@ -4,6 +4,7 @@
     <label for="">
         Наименование
         <input asp-for="Name" type="text">
+        <span asp-validation-for="Name" class="text-danger"></span>
     </label>
 </div>
 
@@ -11,6 +12,7 @@
     <label for="">
         Компания
         <input asp-for="Company" type="text">
+        <span asp-validation-for="Company" class="text-danger"></span>
     </label>
 </div>
 
@@ -18,7 +20,6 @@
     <label for="">
         Стоимость
         <input asp-for="Price" type="text">
+        <span asp-validation-for="Price" class="text-danger"></span>
     </label>
 </div>
-
-

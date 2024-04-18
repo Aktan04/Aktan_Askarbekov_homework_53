@@ -28,13 +28,15 @@ public class PhoneController : Controller
     [HttpPost]
     public IActionResult Create(Phone phone)
     {
-        if (phone != null)
+        if (ModelState.IsValid)
         {
             _db.Phones.Add(phone);
             _db.SaveChanges();
+            return RedirectToAction("Index");
         }
-        
-        return RedirectToAction("Index");
+    
+        ViewBag.Brands = _db.Brands.ToList();
+        return View(phone);
     }
     
     public IActionResult Edit(int? id)

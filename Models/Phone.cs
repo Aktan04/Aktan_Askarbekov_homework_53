@@ -10,7 +10,8 @@ public class Phone
     public string Name { get; set; }
     [Required(ErrorMessage = "Поле 'Компания' обязательно для заполнения")]
     public string Company { get; set; }
-    [Required(ErrorMessage = "Поле 'Цена' обязательно для заполнения")]
+    [Range(100, 2000)]
+    [Required]
     public int Price { get; set; }
     [BindNever]
     public ICollection<PhoneReview>? Reviews { get; set; }
