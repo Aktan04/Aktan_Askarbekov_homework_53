@@ -1,5 +1,6 @@
 using Hw53.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hw53.Controllers;
 
@@ -14,12 +15,13 @@ public class PhoneController : Controller
     
     public IActionResult Index()
     {
-        List<Phone> phones = _db.Phones.ToList();
+        List<Phone> phones = _db.Phones.Include(p => p.Reviews).ToList();
         return View(phones);
     }
 
     public IActionResult Create()
     {
+        ViewBag.Brands = _db.Brands.ToList();
         return View();
     }
     
@@ -37,11 +39,13 @@ public class PhoneController : Controller
     
     public IActionResult Edit(int? id)
     {
+        
         if (id != null)
         {
             Phone phone = _db.Phones.FirstOrDefault(p => p.Id == id);
             if (phone != null)
             {
+                ViewBag.Brands = _db.Brands.ToList();
                 return View(phone);
             }
         }
@@ -51,12 +55,14 @@ public class PhoneController : Controller
     [HttpPost]
     public IActionResult Edit(Phone phone)
     {
-        if (phone != null)
+        ViewBag.Brands = _db.Brands.ToList();
+        if (ModelState.IsValid)
         {
             _db.Phones.Update(phone);
             _db.SaveChanges();
+            return RedirectToAction("Index");
         }
-        return RedirectToAction("Index");
+        return View(phone);
     }
     
     public IActionResult Delete(int? id)
