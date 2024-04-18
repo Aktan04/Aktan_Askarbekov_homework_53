@@ -1,0 +1,31 @@
+@model Hw53.Models.Brand
+
+@{
+    ViewBag.Title = "Добавить бренд";
+    Layout = "_Layout";
+}
+
+<h2>Добавить бренд</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoundationDate"></label>
+                <input asp-for="FoundationDate" class="form-control" />
+                <span asp-validation-for="FoundationDate" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+</div>

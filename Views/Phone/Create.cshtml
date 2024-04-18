@@ -14,7 +14,18 @@
         <form asp-action="Create" method="post">
             
             @await Html.PartialAsync("_CreateEditForm", new Phone())
-
+            <div class="form_row">
+                <label for="BrandId">
+                    Бренд
+                    <select asp-for="BrandId" class="form-control">
+                        <option value="">-- Выберите бренд --</option>
+                        @foreach (var brand in ViewBag.Brands)
+                        {
+                            <option value="@brand.Id">@brand.Name</option>
+                        }
+                    </select>
+                </label>
+            </div>
             <button type="submit">Создать</button>
         </form>
     </div>
